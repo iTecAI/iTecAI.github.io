@@ -2049,13 +2049,10 @@
     }
 
     function loadMap() {
-      /*var oReq = new XMLHttpRequest();
+      var oReq = new XMLHttpRequest();
       oReq.addEventListener("load", reqListener);
-      oReq.open("GET", "https://itecai.github.io/dnd/peacecraft/Aladen.map");
-      oReq.send();*/
-      jQuery.get('Aladen.map', function(data) {
-        console.log(data);
-      });
+      oReq.open("GET", "Aladen.map");
+      oReq.send();
     }
   </script>
 </body>
