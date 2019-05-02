@@ -2050,6 +2050,7 @@
 
     function loadMap() {
       var oReq = new XMLHttpRequest();
+      oReq.responseType = 'blob';
       oReq.addEventListener("load", reqListener);
       oReq.open("GET", "Aladen.map");
       oReq.send();
