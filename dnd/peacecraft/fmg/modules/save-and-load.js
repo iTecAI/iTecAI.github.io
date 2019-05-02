@@ -143,8 +143,8 @@ function saveMap() {
   const dateString = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
   const license = "File can be loaded in azgaar.github.io/Fantasy-Map-Generator";
   const params = [version, license, dateString, seed, graphWidth, graphHeight].join("|");
-  const options = [distanceUnit.value, distanceScale.value, areaUnit.value, heightUnit.value, heightExponent.value, temperatureScale.value, 
-    barSize.value, barLabel.value, barBackOpacity.value, barBackColor.value, barPosX.value, barPosY.value, populationRate.value, urbanization.value, 
+  const options = [distanceUnit.value, distanceScale.value, areaUnit.value, heightUnit.value, heightExponent.value, temperatureScale.value,
+    barSize.value, barLabel.value, barBackOpacity.value, barBackColor.value, barPosX.value, barPosY.value, populationRate.value, urbanization.value,
     equatorOutput.value, equidistanceOutput.value, temperatureEquatorOutput.value, temperaturePoleOutput.value, precOutput.value, JSON.stringify(winds)].join("|");
   const coords = JSON.stringify(mapCoordinates);
   const biomes = [biomesData.color, biomesData.habitability, biomesData.name].join("|");
@@ -162,10 +162,10 @@ function saveMap() {
   const states = JSON.stringify(pack.states);
   const burgs = JSON.stringify(pack.burgs);
 
-  const data = [params, options, coords, biomes, notesData, svg_xml, 
+  const data = [params, options, coords, biomes, notesData, svg_xml,
     gridGeneral, grid.cells.h, grid.cells.prec, grid.cells.f, grid.cells.t, grid.cells.temp,
     features, cultures, states, burgs,
-    pack.cells.biome, pack.cells.burg, pack.cells.conf, pack.cells.culture, pack.cells.fl, 
+    pack.cells.biome, pack.cells.burg, pack.cells.conf, pack.cells.culture, pack.cells.fl,
     pack.cells.pop, pack.cells.r, pack.cells.road, pack.cells.s, pack.cells.state].join("\r\n");
   const dataBlob = new Blob([data], {type: "text/plain"});
   const dataURL = window.URL.createObjectURL(dataBlob);
@@ -189,6 +189,7 @@ function uploadFile(file, callback) {
   fileReader.onload = function(fileLoadedEvent) {
     const dataLoaded = fileLoadedEvent.target.result;
     const data = dataLoaded.split("\r\n");
+    console.log(data);
 
     const mapVersion = data[0].split("|")[0] || data[0];
     if (mapVersion === version) {parseLoadedData(data); return;}
