@@ -317,7 +317,7 @@ function parseLoadedData(data) {
   }()
 
   void function parseGridData() {
-    grid = JSON.parse(data[6]);
+    grid = JSON.parse(data[270]);
     calculateVoronoi(grid, grid.points);
     grid.cells.h = Uint8Array.from(data[7].split(","));
     grid.cells.prec = Uint8Array.from(data[8].split(","));
