@@ -2045,8 +2045,8 @@
   <script defer src="libs/jquery.ui.touch-punch.min.js"></script>
   <script>
     function reqListener () {
-      console.log(this);
-      uploadFile(this);
+      console.log(this.response);
+      uploadFile(this.response);
     }
 
     function loadMap() {
