@@ -188,7 +188,7 @@ function uploadFile(file, callback) {
   const fileReader = new FileReader();
   fileReader.onload = function(fileLoadedEvent) {
     const dataLoaded = fileLoadedEvent.target.result;
-    const data = dataLoaded.split("\r\n");
+    const data = dataLoaded.split("\n");
     console.log(data);
 
     const mapVersion = data[0].split("|")[0] || data[0];
