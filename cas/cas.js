@@ -21,7 +21,7 @@ var CAS_EXP = [
         hours: 25,
         hour_types: ['A'],
         img: 'assets/activity-img.jpg',
-        certification: 'certifications/act-cert'
+        certification: 'certifications/act-cert.pdf'
     }
 ];
 
