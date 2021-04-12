@@ -18,7 +18,7 @@ var CAS_EXP = [
     {
         title: "Pandemic Runs",
         desc: "Over the course of the Covid-19 Pandemic, I've gone on a number of half-hour runs at least once a week for a large part of 2020 and the beginning of 2021. This has assisted me in keeping in shape during a time which would otherwise make this difficult, and has allowed me to continue the exercise that I would normally get at school during PE or similar.",
-        hours: 25,
+        hours: 30,
         hour_types: ['A'],
         img: 'assets/activity-img.jpg',
         certification: 'certifications/act-cert.pdf'
