@@ -1,0 +1,31 @@
+{
+    "header": {
+        "profile_image": "https://avatars.githubusercontent.com/u/30746447?v=4",
+        "name": "Dax Harris",
+        "pronouns": "she / they / it",
+        "summary_tags": [
+            "Full-Stack Developer",
+            "REST API Engineer",
+            "Experienced Leader"
+        ],
+        "contact": [
+            {
+                "icon": "IconBrandGithub",
+                "label": "GitHub",
+                "value": "iTecAI",
+                "href": "https://github.com/iTecAI"
+            },
+            {
+                "icon": "IconBrandDiscord",
+                "label": "Discord",
+                "value": "@itecx"
+            },
+            {
+                "icon": "IconBrandGmail",
+                "label": "Email",
+                "value": "mvh3875@rit.edu",
+                "href": "mailto:mvh3875@rit.edu"
+            }
+        ]
+    }
+}
