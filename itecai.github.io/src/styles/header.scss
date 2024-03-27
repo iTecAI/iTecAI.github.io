@@ -1,4 +1,21 @@
+.code-summary {
+    height: 100%;
+    overflow: hidden;
+    position: absolute !important;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: -10;
+    user-select: none;
+    filter: brightness(85%);
+    transition: filter 0.1s;
+}
+
 .header {
+    &:hover .code-summary {
+        filter: brightness(90%);
+    }
+
     &.expanded {
         display: inline-block;
         position: relative;

@@ -8,6 +8,22 @@
             "REST API Engineer",
             "Experienced Leader"
         ],
+        "skills": {
+            "languages": ["Python", "Typescript", "HTML/CSS/JS", "Java", "C"],
+            "tools": [
+                "React JS",
+                "MongoDB",
+                "PostgreSQL",
+                "Git",
+                "VS Code",
+                "Github Actions",
+                "AWS",
+                "Kubernetes",
+                "Proxmox",
+                "SSH"
+            ],
+            "platforms": ["GNU/Linux", "MS Windows", "Raspberry Pi", "Arduino"]
+        },
         "contact": [
             {
                 "icon": "IconBrandGithub",

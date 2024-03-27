@@ -15,8 +15,57 @@ import {
 import * as data from "../data/about.json";
 import "../styles/header.scss";
 import { IconMessage } from "@tabler/icons-react";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { DynamicIcon } from "./icons";
+import { CodeHighlight } from "@mantine/code-highlight";
+
+export function CodeSummary() {
+    const [selectedContact, setSelectedContact] = useState<[string, string]>([
+        data.header.contact[0].label,
+        data.header.contact[0].value,
+    ]);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const choice = Math.round(
+                Math.random() * (data.header.contact.length - 1)
+            );
+            setSelectedContact([
+                data.header.contact[choice].label,
+                data.header.contact[choice].value,
+            ]);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const code = useMemo(() => {
+        return `from typing import Literal
+
+class Developer:
+    def __init__(self):
+        self.name: str = "${data.header.name}"
+        self.pronouns: str = "${data.header.pronouns}"
+        self.descriptors: list[str] = ["${data.header.summary_tags.join(
+            '", "'
+        )}"]
+        self.skills: dict[str, list[str]] = {
+            "languages": ["${data.header.skills.languages.join('", "')}"],
+            "tools": ["${data.header.skills.tools.join('", "')}"],
+            "platforms": ["${data.header.skills.platforms.join('", "')}"]
+        }
+
+    def contact_me_at(self, contact: Literal["${selectedContact[0]}"]) -> str:
+        return "${selectedContact[1]}"
+`;
+    }, [selectedContact]);
+    return (
+        <CodeHighlight
+            withCopyButton={false}
+            className="code-summary"
+            language="python"
+            code={code}
+        />
+    );
+}
 
 export function ContactOverlay({
     children,
@@ -64,6 +113,7 @@ export function ContactOverlay({
 export function ExpandedHeader() {
     return (
         <Box className="header expanded">
+            <CodeSummary />
             <Group justify="end" gap="lg" className="self-info" wrap="nowrap">
                 <Stack
                     gap="md"
