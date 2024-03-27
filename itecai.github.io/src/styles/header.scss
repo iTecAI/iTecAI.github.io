@@ -15,17 +15,23 @@
             }
 
             .info-image {
-                max-height: calc(100% - 96px);
-                height: auto;
-                max-width: 40vw;
-                border-radius: 50%;
-            }
-        }
+                position: relative;
+                height: fit-content;
+                width: fit-content;
 
-        .contact-action {
-            position: absolute;
-            right: 64px;
-            bottom: 64px;
+                img {
+                    border-radius: 50%;
+                    max-height: calc(360px - 96px);
+                    height: auto;
+                    max-width: 40vw;
+                }
+
+                .contact-action {
+                    position: absolute;
+                    right: 5%;
+                    bottom: 5%;
+                }
+            }
         }
     }
 

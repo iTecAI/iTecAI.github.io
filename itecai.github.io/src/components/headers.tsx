@@ -85,22 +85,20 @@ export function ExpandedHeader() {
                             ))}
                     </Group>
                 </Stack>
-                <Image
-                    radius="xl"
-                    src={data.header.profile_image}
-                    className="info-image"
-                />
-                <ContactOverlay>
-                    <Tooltip label="Contact Me" color="dark" withArrow>
-                        <ActionIcon
-                            size="xl"
-                            radius="xl"
-                            className="contact-action"
-                        >
-                            <IconMessage size={20} />
-                        </ActionIcon>
-                    </Tooltip>
-                </ContactOverlay>
+                <Box className="info-image">
+                    <Image radius="xl" src={data.header.profile_image} />
+                    <ContactOverlay>
+                        <Tooltip label="Contact Me" color="dark" withArrow>
+                            <ActionIcon
+                                size="xl"
+                                radius="xl"
+                                className="contact-action"
+                            >
+                                <IconMessage size={20} />
+                            </ActionIcon>
+                        </Tooltip>
+                    </ContactOverlay>
+                </Box>
             </Group>
         </Box>
     );
