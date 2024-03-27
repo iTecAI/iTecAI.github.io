@@ -1,28 +1,98 @@
-import { AppShell, ScrollAreaAutosize, Skeleton, Stack } from "@mantine/core";
-import { useHeadroom } from "@mantine/hooks";
+import { ActionIcon, AppShell, Tabs } from "@mantine/core";
+import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import "../styles/shell.scss";
 import { CollapsedHeader, ExpandedHeader } from "./headers";
+import {
+    IconArticle,
+    IconBriefcase,
+    IconChevronCompactLeft,
+    IconChevronCompactRight,
+    IconInfoCircleFilled,
+    IconTools,
+} from "@tabler/icons-react";
+import { useState } from "react";
 
 export function SiteShell() {
     const pinned = useHeadroom({ fixedAt: 240 });
+    const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
+    const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+    const [selected, setSelected] = useState<
+        "about" | "projects" | "experience" | "articles"
+    >("about");
     return (
         <AppShell
-            header={{ height: pinned ? 360 : 60, offset: false }}
+            header={{ height: pinned ? 360 : 60 }}
+            navbar={{
+                width: 300,
+                breakpoint: "sm",
+                collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+            }}
             padding="sm"
             className="site-shell"
         >
             <AppShell.Header className="site-header">
                 {pinned ? <ExpandedHeader /> : <CollapsedHeader />}
             </AppShell.Header>
-            <AppShell.Main className="site-main">
-                <ScrollAreaAutosize>
-                    <Stack gap="sm">
-                        {new Array(50).fill(0).map((_, i) => (
-                            <Skeleton animate={false} key={i} height={20} />
-                        ))}
-                    </Stack>
-                </ScrollAreaAutosize>
-            </AppShell.Main>
+            <AppShell.Navbar className="site-nav">
+                <ActionIcon
+                    hiddenFrom="sm"
+                    onClick={toggleMobile}
+                    className="nav-expander"
+                    variant="default"
+                >
+                    {mobileOpened ? (
+                        <IconChevronCompactLeft />
+                    ) : (
+                        <IconChevronCompactRight />
+                    )}
+                </ActionIcon>
+                <ActionIcon
+                    visibleFrom="sm"
+                    onClick={toggleDesktop}
+                    className="nav-expander"
+                    variant="default"
+                >
+                    {desktopOpened ? (
+                        <IconChevronCompactLeft />
+                    ) : (
+                        <IconChevronCompactRight />
+                    )}
+                </ActionIcon>
+                <Tabs
+                    orientation="vertical"
+                    value={selected}
+                    onChange={(value) =>
+                        value ? setSelected(value as any) : setSelected("about")
+                    }
+                    variant="pills"
+                    p="sm"
+                >
+                    <Tabs.List w="100%">
+                        <Tabs.Tab
+                            value="about"
+                            leftSection={<IconInfoCircleFilled />}
+                        >
+                            About Me
+                        </Tabs.Tab>
+                        <Tabs.Tab value="projects" leftSection={<IconTools />}>
+                            Projects
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                            value="experience"
+                            leftSection={<IconBriefcase />}
+                        >
+                            Experience
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                            value="articles"
+                            leftSection={<IconArticle />}
+                        >
+                            Blog
+                        </Tabs.Tab>
+                    </Tabs.List>
+                </Tabs>
+            </AppShell.Navbar>
+            <AppShell.Main className="site-main"></AppShell.Main>
         </AppShell>
     );
 }
