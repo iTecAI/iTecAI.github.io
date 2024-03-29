@@ -10,7 +10,8 @@ import {
     IconInfoCircleFilled,
     IconTools,
 } from "@tabler/icons-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { AboutMe } from "./sections/AboutMe";
 
 export function SiteShell() {
     const pinned = useHeadroom({ fixedAt: 240 });
@@ -19,6 +20,20 @@ export function SiteShell() {
     const [selected, setSelected] = useState<
         "about" | "projects" | "experience" | "articles"
     >("about");
+
+    const RenderedSection = useMemo(() => {
+        switch (selected) {
+            case "about":
+                return <AboutMe />;
+            case "articles":
+                return <></>;
+            case "experience":
+                return <></>;
+            case "projects":
+                return <></>;
+        }
+    }, [selected]);
+
     return (
         <AppShell
             header={{ height: pinned ? 360 : 60 }}
@@ -92,7 +107,9 @@ export function SiteShell() {
                     </Tabs.List>
                 </Tabs>
             </AppShell.Navbar>
-            <AppShell.Main className="site-main"></AppShell.Main>
+            <AppShell.Main className="site-main">
+                {RenderedSection}
+            </AppShell.Main>
         </AppShell>
     );
 }

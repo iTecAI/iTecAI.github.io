@@ -23,7 +23,6 @@ export type RootDataModel = {
         contact: ContactModel[];
     };
     sections: {
-        about: any;
         projects: ProjectModel[];
         experience: ExperienceModel[];
         articles: ArticleModel[];
